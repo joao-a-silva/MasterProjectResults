@@ -6,35 +6,63 @@ output: pdf_document
 ---
 
 ```{r loadData}
+#alg <- c("Fault Rules", "Fault Rules with support in the test",
+         "Fault Rules with support in the test version 2", "Rules and Cosine as ensemble",
+          "Rules and Jaccard as ensemble", "Rules Cosine and Jaccard as ensemble",
+        "Cosine with novel class", "Jaccard with novel class" )
 
-    dir <- "experiment1/printers"
+getMac <- function(dir){
+    fileMac <- gsub(" ", "", paste(dir, "/tables_MAC"))
+    mac <- read.csv(fileMac, header = FALSE)
+}
+
+getMic <- function(dir){
+    fileMic <- gsub(" ", "", paste(dir, "/tables_MIC"))
+    mic <- read.csv(fileMic, header = FALSE)
+}
+
+getTime <- function(dir){
+    fileTime <- gsub(" ", "", paste(dir, "/tables_Time"))
+    time <- read.csv(fileTime,  sep=";", header = FALSE)
+}
+
+getNC <- function(dir){
+     fileNC <- gsub(" ", "", paste(dir, "/tables_NewClass"))
+     nc <- read.csv(fileNC, header = FALSE)
+}
+
+getDatFrame <- function(dir){
     
-    algs <- read.csv("algorithms")
-    names <- c("Algorithm", "MicroF1", "MacroF1", "TrainTime", "TestTime", "NumNewClasses")
-    
-    dataFrame <- data.frame(algs)
+    dataFrame <- data.frame(x1 = character(), x2 = numeric(), x3 = numeric(), x4 =  numeric(),x5 = numeric(), x6 = numeric(), x7 = numeric())
     
     listDir <- list.dirs(dir)
-    
-    for (dir in listDir[2:2]) {
-        fileMac <- gsub(" ", "", paste(dir, "/tables_MAC"))
-        mac <- read.csv(fileMac)
+    #print(listDir)
+    algs <- read.csv("algorithms", header = FALSE )
+    j <- 1
+     for (dir1 in listDir[2:4]) {
+         
+         print(dir1)
+         
+         mac <- getMac(dir1)
+         mic <- getMic(dir1)
+         time <- getTime(dir1)
+         nc <- getNC(dir1)
+         
+        i = 1
         
-        fileMic <- gsub(" ", "", paste(dir, "/tables_MIC"))
-        mic <- read.csv(fileMic)
-      
-        fileTime <- gsub(" ", "", paste(dir, "/tables_Time"))
-        time <- read.csv(fileTime, sep=";")
-
-        fileNC <- gsub(" ", "", paste(dir, "/tables_NewClass"))
-        nc <- read.csv(fileNC)
-      
-        dataFrame <- data.frame(algs, mac, mic, time$train, time$test, nc)
-    }
+        while(i < length(mac$V1)+1){
+             dataFrame <- rbind(dataFrame, data.frame(algs$V1[i], mac$V1[i], mic$V1[i], time$V1[i], time$V2[i], nc$V1[i], j))
+             i <- i + 1
+             
+          }
+        j <- j+4
+     } 
     
+    names <- c("Algorithm", "MacroF1", "MicroF1", "TrainTime", "TestTime", "NumNewClasses", "%")  
+    colnames(dataFrame) <- names
     dataFrame
+}
     
-    #print(dataFrame)
     
 
 ```
@@ -60,7 +88,7 @@ summary(cars)
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
+```{r pressure echo = TRUE}
 plot(pressure)
 ```
 
