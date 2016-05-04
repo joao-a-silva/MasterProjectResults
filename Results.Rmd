@@ -6,11 +6,6 @@ output: pdf_document
 ---
 
 ```{r loadData}
-#alg <- c("Fault Rules", "Fault Rules with support in the test",
-         "Fault Rules with support in the test version 2", "Rules and Cosine as ensemble",
-          "Rules and Jaccard as ensemble", "Rules Cosine and Jaccard as ensemble",
-        "Cosine with novel class", "Jaccard with novel class" )
-
 getMac <- function(dir){
     fileMac <- gsub(" ", "", paste(dir, "/tables_MAC"))
     mac <- read.csv(fileMac, header = FALSE)
@@ -58,12 +53,42 @@ getDatFrame <- function(dir){
         j <- j+4
      } 
     
-    names <- c("Algorithm", "MacroF1", "MicroF1", "TrainTime", "TestTime", "NumNewClasses", "%")  
+    names <- c("Algorithm", "MacroF1", "MicroF1", "TrainTime", "TestTime", "NumNewClasses", "Perc")  
     colnames(dataFrame) <- names
     dataFrame
 }
+
+plotMacMic <- function(data, base, perc){
+    print(data)
+    mat <- data.matrix(data[,2:3])
+    rownames(mat) <- data$Algorithm
+    mat <- t(mat)
+    title <- paste("Macro e Micro F1: Base de dados ", base, "com ", perc ,"% de treino.") 
+    barplot(mat, beside=TRUE, col=c("steelblue4","tomato"), ylab = " % ", las=2, yaxp=c(0,100,10))
+    # setup for no margins on the legend
+    title(title, line = 3)
+    legend('topright', rownames(mat), fill =c("steelblue4","tomato"))
+   
+}
+
+
+plotTime <- function(data, base, perc){
+    print(data)
+    mat <- data.matrix(data[,4:5])
+    rownames(mat) <- data$Algorithm
+    mat <- t(mat)
+    title <- paste("Tempo: Base de dados ", base, "com ", perc ,"% de treino.") 
+    barplot(mat, col=c("steelblue4","tomato"), ylab = "Tempo (s)", las=2)
+    title(title, line = 3)
+    legend('top', rownames(mat), fill =c("steelblue4","tomato") )
+}
+
+
+
     
-    
+dataFrame <- getDatFrame("experiment1/printers")
+
+plotMacMic(dataFrame[which(dataFrame$Perc == 1),])
 
 ```
 
