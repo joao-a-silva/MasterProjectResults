@@ -1,120 +1,541 @@
 ---
 title: "Results Analisys"
 author: "Joao A. Silva"
-date: "May 2, 2016"
-output: pdf_document
+output: 
+  pdf_document: 
+    fig_crop: no
+    number_sections: yes
 ---
 
-```{r loadData}
-getMac <- function(dir){
-    fileMac <- gsub(" ", "", paste(dir, "/tables_MAC"))
-    mac <- read.csv(fileMac, header = FALSE)
-}
-
-getMic <- function(dir){
-    fileMic <- gsub(" ", "", paste(dir, "/tables_MIC"))
-    mic <- read.csv(fileMic, header = FALSE)
-}
-
-getTime <- function(dir){
-    fileTime <- gsub(" ", "", paste(dir, "/tables_Time"))
-    time <- read.csv(fileTime,  sep=";", header = FALSE)
-}
-
-getNC <- function(dir){
-     fileNC <- gsub(" ", "", paste(dir, "/tables_NewClass"))
-     nc <- read.csv(fileNC, header = FALSE)
-}
-
-getDatFrame <- function(dir){
-    
-    dataFrame <- data.frame(x1 = character(), x2 = numeric(), x3 = numeric(), x4 =  numeric(),x5 = numeric(), x6 = numeric(), x7 = numeric())
-    
-    listDir <- list.dirs(dir)
-    #print(listDir)
-    algs <- read.csv("algorithms", header = FALSE )
-    j <- 1
-     for (dir1 in listDir[2:4]) {
-         
-         print(dir1)
-         
-         mac <- getMac(dir1)
-         mic <- getMic(dir1)
-         time <- getTime(dir1)
-         nc <- getNC(dir1)
-         
-        i = 1
-        
-        while(i < length(mac$V1)+1){
-             dataFrame <- rbind(dataFrame, data.frame(algs$V1[i], mac$V1[i], mic$V1[i], time$V1[i], time$V2[i], nc$V1[i], j))
-             i <- i + 1
-             
-          }
-        j <- j+4
-     } 
-    
-    names <- c("Algorithm", "MacroF1", "MicroF1", "TrainTime", "TestTime", "NumNewClasses", "Perc")  
-    colnames(dataFrame) <- names
-    dataFrame
-}
-
-plotMacMic <- function(data, base, perc){
-    print(data)
-    mat <- data.matrix(data[,2:3])
-    rownames(mat) <- data$Algorithm
-    mat <- t(mat)
-    title <- paste("Macro e Micro F1: Base de dados ", base, "com ", perc ,"% de treino.") 
-    barplot(mat, beside=TRUE, col=c("steelblue4","tomato"), ylab = " % ", las=2, yaxp=c(0,100,10))
-    # setup for no margins on the legend
-    title(title, line = 3)
-    legend('topright', rownames(mat), fill =c("steelblue4","tomato"))
-   
-}
-
-
-plotTime <- function(data, base, perc){
-    print(data)
-    mat <- data.matrix(data[,4:5])
-    rownames(mat) <- data$Algorithm
-    mat <- t(mat)
-    title <- paste("Tempo: Base de dados ", base, "com ", perc ,"% de treino.") 
-    barplot(mat, col=c("steelblue4","tomato"), ylab = "Tempo (s)", las=2)
-    title(title, line = 3)
-    legend('top', rownames(mat), fill =c("steelblue4","tomato") )
-}
-
-
-
-    
-dataFrame <- getDatFrame("experiment1/printers")
-
-plotMacMic(dataFrame[which(dataFrame$Perc == 1),])
+```{r, echo=FALSE}
+source("script.R")
+experimento <- "experiment1"
 
 ```
 
+#Experimento 1
+Experimento sem remoção de regras ruins (técnica coverage) e atualizando o modelo apenas com isntâncias de teste classificadas como pertencente a uma nova classe.
 
+##Printers
 
+```{r, echo=FALSE}
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+dataFrame <- getDatFrame( gsub(" ", "", paste(experimento,"/","printers" )))
+#dataFrame
 ```
 
-## R Markdown
+###90% treino
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 9),]
+plotMacMic(subset, "printers", 9)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+``` 
 
-```{r cars}
-summary(cars)
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure echo = TRUE}
-plot(pressure)
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r, echo=FALSE}
+plotTime(subset, "printers", 9)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+```
+
+
+###50% treino
+
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+plotMacMic(subset, "printers", 5)
+
+``` 
+
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
+```
+
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
+```
+
+```{r, echo=FALSE}
+plotTime(subset, "printers", 5)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+```
+
+### 10% treino
+
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 1),]
+plotMacMic(subset, "printers", 1)
+
+``` 
+
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
+```
+
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
+```
+
+```{r, echo=FALSE}
+plotTime(subset, "printers", 1)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+```
+
+##Uol-electronic
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrame( gsub(" ", "", paste(experimento,"/","electronic" )))
+#dataFrame
+```
+
+###90% treino
+
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 9),]
+plotMacMic(subset, "Uol-electronic", 9)
+
+``` 
+
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
+```
+
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
+```
+
+```{r, echo=FALSE}
+plotTime(subset, "Uol-electronic", 9)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+```
+
+
+###50% treino
+
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+plotMacMic(subset, "Uol-electronic", 5)
+
+``` 
+
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
+```
+
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
+```
+
+```{r, echo=FALSE}
+plotTime(subset, "Uol-electronic", 5)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+```
+
+### 10% treino
+
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 1),]
+plotMacMic(subset, "Uol-electronic", 1)
+
+``` 
+
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
+```
+
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
+```
+
+```{r, echo=FALSE}
+plotTime(subset, "Uol-electronic", 1)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+```
+
+
+##UOL-non-electronic
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrame( gsub(" ", "", paste(experimento,"/","nonElectronic" )))
+
+#dataFrame
+```
+
+###90% treino
+
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 9),]
+plotMacMic(subset, "UOL-non-electronic", 9)
+
+``` 
+
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
+```
+
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
+```
+
+```{r, echo=FALSE}
+plotTime(subset, "UOL-non-electronic", 9)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+```
+
+
+###50% treino
+
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+plotMacMic(subset, "UOL-non-electronic", 5)
+
+``` 
+
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
+```
+
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
+```
+
+```{r, echo=FALSE}
+plotTime(subset, "UOL-non-electronic", 5)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+```
+
+### 10% treino
+
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 1),]
+plotMacMic(subset, "UOL-non-electronic", 1)
+
+``` 
+
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
+```
+
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
+```
+
+```{r, echo=FALSE}
+plotTime(subset, "printers", 1)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+```
+
+##Cora
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrame( gsub(" ", "", paste(experimento,"/","cora" )))
+#dataFrame
+```
+
+###90% treino
+
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 9),]
+plotMacMic(subset, "cora", 9)
+
+``` 
+
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
+```
+
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
+```
+
+```{r, echo=FALSE}
+plotTime(subset, "cora", 9)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+```
+
+
+###50% treino
+
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+plotMacMic(subset, "cora", 5)
+
+``` 
+
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
+```
+
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
+```
+
+```{r, echo=FALSE}
+plotTime(subset, "cora", 5)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+```
+
+### 10% treino
+
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 1),]
+plotMacMic(subset, "cora", 1)
+
+``` 
+
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
+```
+
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
+```
+
+```{r, echo=FALSE}
+plotTime(subset, "cora", 1)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+```
+
+##PVAF
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrame( gsub(" ", "", paste(experimento,"/","pvaf" )))
+#dataFrame
+```
+
+###90% treino
+
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 9),]
+plotMacMic(subset, "pvaf", 9)
+
+``` 
+
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
+```
+
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
+```
+
+```{r, echo=FALSE}
+plotTime(subset, "pvaf", 9)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+```
+
+
+###50% treino
+
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+plotMacMic(subset, "pvaf", 5)
+
+``` 
+
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
+```
+
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
+```
+
+```{r, echo=FALSE}
+plotTime(subset, "pvaf", 5)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+```
+
+### 10% treino
+
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 1),]
+plotMacMic(subset, "pvaf", 1)
+
+``` 
+
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
+```
+
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
+```
+
+```{r, echo=FALSE}
+plotTime(subset, "pvaf", 1)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+```
+
