@@ -1,34 +1,42 @@
 getMac <- function(dir){
     fileMac <- gsub(" ", "", paste(dir, "/tables_MAC"))
+  #  print(fileMac)
     mac <- read.csv(fileMac, header = FALSE)
 }
 
 getMic <- function(dir){
     fileMic <- gsub(" ", "", paste(dir, "/tables_MIC"))
+   # print(fileMic)
     mic <- read.csv(fileMic, header = FALSE)
 }
 
 getTime <- function(dir){
     fileTime <- gsub(" ", "", paste(dir, "/tables_Time"))
+    #print(fileTime)
     time <- read.csv(fileTime,  sep=";", header = FALSE)
 }
 
 getNC <- function(dir){
     fileNC <- gsub(" ", "", paste(dir, "/tables_NewClass"))
+   # print(fileNC)
+    #print("*************************************")
     nc <- read.csv(fileNC, header = FALSE)
+    
 }
 
 getDatFrame <- function(dir){
-    
+  #  print(dir)
     dataFrame <- data.frame(x1 = character(), x2 = numeric(), x3 = numeric(), x4 =  numeric(),x5 = numeric(), x6 = numeric(), x7 = numeric())
     
     listDir <- list.dirs(dir)
+    #print(listDir)
     algs <- read.csv("algorithms", header = FALSE )
     j <- 1
-    for (dir1 in listDir[2:4]) {
+    for (dir1 in listDir[c(2,4,6)]) {
         
-        # print(dir1)
-        
+        #print(dir1)
+        dir1 <- gsub(" ", "", paste(dir1, "/tablesMetricsTime"))
+       # print(dir1)
         mac <- getMac(dir1)
         mic <- getMic(dir1)
         time <- getTime(dir1)
