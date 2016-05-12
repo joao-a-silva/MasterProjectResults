@@ -62,10 +62,14 @@ plotMacMic <- function(data, base, perc){
     rownames(mat) <- data$Algorithm
     mat <- t(mat)
     title <- paste("Macro e Micro F1: Base de dados ", base, "com ", perc*10 ,"% de treino.") 
+    layout(rbind(1,2), heights=c(10,1)) 
     barplot(mat, beside=TRUE, col=c("steelblue4","tomato"), ylab = " % ", las=2, yaxp=c(0,100,10))
-    # setup for no margins on the legend
     title(title, line = 3)
-    legend('topright', rownames(mat), fill =c("steelblue4","tomato"))
+    abline(h=max(data[,3]), col= "red", lty=2)
+    abline(h=max(data[,2]), col= "blue", lty=2)
+    par(mar=c(0, 0, 0, 0), xpd=TRUE)
+    plot.new()
+    legend('bottom', rownames(mat), fill =c("steelblue4","tomato"), horiz = TRUE, cex=0.7)
     
 }
 

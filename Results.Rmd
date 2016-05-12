@@ -1,9 +1,8 @@
 ---
-title: "Results Analisys"
+title: "Análise Resultados"
 author: "Joao A. Silva"
 output: 
   pdf_document: 
-    fig_crop: no
     number_sections: yes
 ---
 
@@ -13,8 +12,26 @@ experimento <- "experiment1"
 
 ```
 
+
 #Experimento 1
-Experimento sem remoção de regras ruins (técnica coverage) e atualizando o modelo apenas com isntâncias de teste classificadas como pertencente a uma nova classe.
+Experimento sem remoção de regras ruins (técnica coverage) e atualizando o modelo apenas com instâncias de teste classificadas como pertencente a uma nova classe.
+<!---
+#Experimento 2
+Experimento sem remoção de regras ruins (técnica coverage) e atualizando o modelo  com instâncias de teste classificadas como pertencente a uma nova classe e também com instâncias classificadas com 100% de confiança na primeira passagem.
+
+#Experimento 3
+Experimento com remoção de regras ruins (técnica coverage) e atualizando o modelo  apenas com instâncias de teste classificadas como pertencente a uma nova classe.
+
+#Experimento 4
+Experimento com remoção de regras ruins (técnica coverage) e atualizando o modelo  com instâncias de teste classificadas como pertencente a uma nova classe e também com instâncias classificadas com 100% de confiança na primeira passagem.
+
+#Experimento 5
+Experimento com remoção de regras ruins (técnica coverage)  atualizando o modelo  com instâncias de teste classificadas como pertencente a uma nova classe e removendo classes com poucas instâncias do treino.
+
+#Experimento 6
+Experimento com remoção de regras ruins (técnica coverage)  atualizando o modelo  com instâncias de teste classificadas como pertencente a uma nova classe e removendo classes com poucas instâncias do treino e teste.
+-->
+
 
 ##Printers
 
@@ -511,7 +528,7 @@ summary(subset$TestTime)
 
 ```{r, echo=FALSE}
 subset <-dataFrame[which(dataFrame$Perc == 1),]
-plotMacMic(subset, "pvaf", 1)
+plotMacMic(subset, "prvaf", 1)
 
 ``` 
 
