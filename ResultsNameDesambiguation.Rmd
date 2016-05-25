@@ -1,0 +1,912 @@
+---
+title: "Análise Resultados - Author Name Desambiguation"
+author: "Joao A. Silva"
+output: 
+  pdf_document: 
+    number_sections: yes
+    #toc: true
+    #highlight: zenburn
+    fig_width: 5
+    fig_height: 5
+classoption: landscape
+---
+
+```{r, echo=FALSE}
+source("script.R")
+experimento <- "experiment1"
+
+```
+
+#Experimento 1
+Experimento sem remoção de regras ruins (técnica coverage) e atualizando o modelo apenas com instâncias de teste classificadas como pertencente a uma nova classe.
+
+\pagebreak
+
+##Agupta
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/agupta" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+
+```
+
+\pagebreak
+
+##Akumar
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/akumar" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+
+```
+
+\pagebreak
+
+##Cchen
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/cchen" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Djohnson
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/djohnson" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Jlee
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/jlee" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+
+```
+
+\pagebreak
+
+##Jmartin
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/jmartin" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Jrobinson
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/jrobinson" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Jsmith
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/jsmith" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Ktanaka
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/ktanaka" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Mbrown
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/mbrown" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+
+\pagebreak
+
+##Mjones
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/mjones" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Mmiller
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/mmiller" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Slee
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/slee" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Ychen
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/ychen" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+
+#Experimento 2
+Experimento sem remoção de regras ruins (técnica coverage) e atualizando o modelo  com instâncias de teste classificadas como pertencente a uma nova classe e também com instâncias classificadas com 100% de confiança na primeira passagem.
+
+```{r, echo=FALSE}
+experimento <- "experiment2"
+```
+
+\pagebreak
+
+##Agupta
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/agupta" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+
+```
+
+\pagebreak
+
+##Akumar
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/akumar" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+
+```
+
+\pagebreak
+
+##Cchen
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/cchen" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Djohnson
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/djohnson" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Jlee
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/jlee" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+
+```
+
+\pagebreak
+
+##Jmartin
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/jmartin" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Jrobinson
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/jrobinson" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Jsmith
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/jsmith" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Ktanaka
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/ktanaka" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Mbrown
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/mbrown" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+
+\pagebreak
+
+##Mjones
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/mjones" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Mmiller
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/mmiller" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Slee
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/slee" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Ychen
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/ychen" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+#Experimento 3
+Experimento com remoção de regras ruins (técnica coverage) e atualizando o modelo  apenas com instâncias de teste classificadas como pertencente a uma nova classe.
+
+```{r, echo=FALSE}
+experimento <- "experiment3"
+```
+
+\pagebreak
+
+##Agupta
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/agupta" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+
+```
+
+\pagebreak
+
+##Akumar
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/akumar" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+
+```
+
+\pagebreak
+
+##Cchen
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/cchen" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Djohnson
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/djohnson" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Jlee
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/jlee" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+
+```
+
+\pagebreak
+
+##Jmartin
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/jmartin" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Jrobinson
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/jrobinson" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Jsmith
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/jsmith" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Ktanaka
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/ktanaka" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Mbrown
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/mbrown" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+
+\pagebreak
+
+##Mjones
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/mjones" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Mmiller
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/mmiller" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Slee
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/slee" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Ychen
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/ychen" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+
+#Experimento 4
+Experimento com remoção de regras ruins (técnica coverage) e atualizando o modelo  com instâncias de teste classificadas como pertencente a uma nova classe e também com instâncias classificadas com 100% de confiança na primeira passagem.
+
+
+```{r, echo=FALSE}
+experimento <- "experiment4"
+```
+
+\pagebreak
+
+##Agupta
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/agupta" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+
+```
+
+\pagebreak
+
+##Akumar
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/akumar" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+
+```
+
+\pagebreak
+
+##Cchen
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/cchen" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Djohnson
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/djohnson" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Jlee
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/jlee" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+
+```
+
+\pagebreak
+
+##Jmartin
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/jmartin" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Jrobinson
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/jrobinson" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Jsmith
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/jsmith" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Ktanaka
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/ktanaka" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Mbrown
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/mbrown" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+
+\pagebreak
+
+##Mjones
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/mjones" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Mmiller
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/mmiller" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Slee
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/slee" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+\pagebreak
+
+##Ychen
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","nameDesambiguation/5/ychen" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Author Name Desambiguation", 5)
+```
+```{r, echo=FALSE}
+plotTime(subset, "Author Name Desambiguation", 5)
+```
+
+#Experimento 5
+Experimento com remoção de regras ruins (técnica coverage)  atualizando o modelo  com instâncias de teste classificadas como pertencente a uma nova classe e removendo classes com poucas instâncias do treino.

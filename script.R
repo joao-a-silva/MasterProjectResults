@@ -1,6 +1,6 @@
 getMac <- function(dir){
     fileMac <- gsub(" ", "", paste(dir, "/tables_MAC"))
-  #  print(fileMac)
+    #print(fileMac)
     mac <- read.csv(fileMac, header = FALSE)
 }
 
@@ -25,11 +25,11 @@ getNC <- function(dir){
 }
 
 getDatFrame <- function(dir){
-  #  print(dir)
+    #print(dir)
     dataFrame <- data.frame(x1 = character(), x2 = numeric(), x3 = numeric(), x4 =  numeric(),x5 = numeric(), x6 = numeric(), x7 = numeric())
     
     listDir <- list.dirs(dir)
-    #print(listDir)
+    print(listDir)
     algs <- read.csv("algorithms", header = FALSE )
 
     j <- 1
@@ -64,13 +64,13 @@ plotMacMic <- function(data, base, perc){
     mat <- data.matrix(data[,2:3])
     rownames(mat) <- data$Algorithm
     mat <- t(mat)
-    title <- paste("Macro e Micro F1: Base de dados ", base, "com ", perc*10 ,"% de treino.") 
+    title <- paste("Macro e Micro F1: Base de dados \n", base, "com ", perc*10 ,"% de treino.") 
     layout(rbind(1,2), heights=c(12,1)) 
     par(oma=c(0,0,1,0)) 
     x <- barplot(mat, beside=TRUE, col=c("steelblue4","tomato"), lwd =2, ylab = " % ",
                  las=2, yaxp=c(0,100,10), cex.names = 0.8,  xaxt = "n")
     
-    title(title, cex.main=0.9, outer = TRUE)
+    title(title, cex.main=0.7, outer = TRUE)
     labs <- paste(algs2$V1, " ")
   
     text(cex=0.7, x=x+1.5, labels = labs, xpd=TRUE, srt=20, pos=2, y= -2.0, )
@@ -88,17 +88,17 @@ plotTime <- function(data, base, perc){
     mat <- data.matrix(data[,4:5])
     rownames(mat) <- data$Algorithm
     mat <- t(mat)
-    title <- paste("Tempo: Base de dados ", base, "com ", perc*10 ,"% de treino.") 
+    title <- paste("Tempo: Base de dados ", base, "\ncom ", perc*10 ,"% de treino.") 
     layout(rbind(1,2), heights=c(12,1)) 
 
     par(oma=c(0,0,1,0)) 
     h <- max(mat[1,]) + max(mat[2,])
-    print(h)
+    #print(h)
     x <- barplot(mat,  col=c("steelblue4","tomato"), lwd =2, ylab = " Tempo (seg) ",
                  las=2,  cex.names = 0.8,  xaxt = "n", yaxp=c(0, trunc(h)+1, 1) )
     
     
-    title(title, cex.main=0.9, outer = TRUE)
+    title(title, cex.main=0.7, outer = TRUE)
     labs <- paste(colnames(mat), " ")
     text(cex=0.7, x=x+.5, labels = labs, xpd=TRUE, srt=20, pos=2, y= 0 )
     par(mar=c(0, 0, 1, 0), xpd=TRUE)
@@ -116,3 +116,43 @@ plotTime <- function(data, base, perc){
 #     title(title, line = 3)
 #     legend('top', rownames(mat), fill =c("steelblue4","tomato") )
 # }
+
+
+getDatFrameNameDesambiguation <- function(dir, j){
+  #  print(dir)
+    dataFrame <- data.frame(x1 = character(), x2 = numeric(), x3 = numeric(), x4 =  numeric(),x5 = numeric(), x6 = numeric(), x7 = numeric())
+    
+    listDir <- list.dirs(dir)
+   # print(listDir)
+    algs <- read.csv("algorithms", header = FALSE )
+ #   print(paste(dir, "/tablesMetricsTime"))
+    dir1 <- paste(dir, "/tablesMetricsTime")
+
+    mac <- getMac(dir1)
+    mic <- getMac(dir1)
+    time <- getTime(dir1)
+    nc <- getNC(dir1)
+    
+    i = 1
+    
+    while(i < length(mac$V1)+1){
+        dataFrame <- rbind(dataFrame, data.frame(algs$V1[i], mac$V1[i], mic$V1[i], time$V1[i], time$V2[i], nc$V1[i], j))
+        i <- i + 1
+    }
+  
+    names <- c("Algorithm", "MacroF1", "MicroF1", "TrainTime", "TestTime", "NumNewClasses", "Perc")  
+    colnames(dataFrame) <- names
+    dataFrame
+}
+
+
+
+
+
+
+
+
+
+
+
+

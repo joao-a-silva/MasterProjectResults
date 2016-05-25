@@ -1,0 +1,236 @@
+---
+title: "Análise Resultados - Printers"
+author: "Joao A. Silva"
+output: 
+  pdf_document: 
+    number_sections: yes
+    #toc: true
+    #highlight: zenburn
+    fig_width: 5
+    fig_height: 5
+classoption: landscape
+---
+
+```{r, echo=FALSE}
+source("script.R")
+experimento <- "experiment1"
+
+```
+
+#Experimento 1
+Experimento sem remoção de regras ruins (técnica coverage) e atualizando o modelo apenas com instâncias de teste classificadas como pertencente a uma nova classe.
+
+\pagebreak
+
+**90% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","printers/printers9" )), 9)
+subset <-dataFrame[which(dataFrame$Perc == 9),]
+
+plotMacMic(subset, "Printers", 9)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Printers", 9)
+
+```
+
+\pagebreak
+
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","printers/printers5" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Printers", 5)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Printers", 5)
+
+```
+
+\pagebreak
+
+**10% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","printers/printers1" )), 1)
+subset <-dataFrame[which(dataFrame$Perc == 1),]
+
+plotMacMic(subset, "Printers", 1)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Printers", 1)
+
+```
+
+\pagebreak
+
+
+#Experimento 2
+Experimento sem remoção de regras ruins (técnica coverage) e atualizando o modelo  com instâncias de teste classificadas como pertencente a uma nova classe e também com instâncias classificadas com 100% de confiança na primeira passagem.
+
+\pagebreak
+
+**90% treino**
+
+```{r, echo=FALSE}
+experimento <- "experiment2"
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","printers/printers9" )), 9)
+subset <-dataFrame[which(dataFrame$Perc == 9),]
+
+plotMacMic(subset, "Printers", 9)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Printers", 9)
+
+```
+
+\pagebreak
+
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","printers/printers5" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Printers", 5)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Printers", 5)
+
+```
+
+\pagebreak
+
+**10% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","printers/printers1" )), 1)
+subset <-dataFrame[which(dataFrame$Perc == 1),]
+
+plotMacMic(subset, "Printers", 1)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Printers", 1)
+
+```
+
+\pagebreak
+
+
+#Experimento 3
+Experimento com remoção de regras ruins (técnica coverage) e atualizando o modelo  apenas com instâncias de teste classificadas como pertencente a uma nova classe.
+
+\pagebreak
+
+**90% treino**
+
+```{r, echo=FALSE}
+experimento <- "experiment3"
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","printers/printers9" )), 9)
+subset <-dataFrame[which(dataFrame$Perc == 9),]
+
+plotMacMic(subset, "Printers", 9)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Printers", 9)
+
+```
+
+\pagebreak
+
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","printers/printers5" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Printers", 5)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Printers", 5)
+
+```
+
+\pagebreak
+
+**10% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","printers/printers1" )), 1)
+subset <-dataFrame[which(dataFrame$Perc == 1),]
+
+plotMacMic(subset, "Printers", 1)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Printers", 1)
+
+```
+
+\pagebreak
+
+#Experimento 4
+Experimento com remoção de regras ruins (técnica coverage) e atualizando o modelo  com instâncias de teste classificadas como pertencente a uma nova classe e também com instâncias classificadas com 100% de confiança na primeira passagem.
+
+\pagebreak
+
+**90% treino**
+
+```{r, echo=FALSE}
+experimento <- "experiment4"
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","printers/printers9" )), 9)
+subset <-dataFrame[which(dataFrame$Perc == 9),]
+
+plotMacMic(subset, "Printers", 9)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Printers", 9)
+
+```
+
+\pagebreak
+
+**50% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","printers/printers5" )), 5)
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+
+plotMacMic(subset, "Printers", 5)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Printers", 5)
+
+```
+
+\pagebreak
+
+**10% treino**
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrameNameDesambiguation( gsub(" ", "", paste(experimento,"/","printers/printers1" )), 1)
+subset <-dataFrame[which(dataFrame$Perc == 1),]
+
+plotMacMic(subset, "Printers", 1)
+
+```
+```{r, echo=FALSE}
+plotTime(subset, "Printers", 1)
+
+```
+
+
+\pagebreak
