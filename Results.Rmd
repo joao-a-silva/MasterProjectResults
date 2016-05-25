@@ -4,23 +4,26 @@ author: "Joao A. Silva"
 output: 
   pdf_document: 
     number_sections: yes
+#classoption: landscape
 ---
 
 ```{r, echo=FALSE}
 source("script.R")
-experimento <- "experiment1"
+experimento <- "experiment2"
 
 ```
 
-
+<!--
 #Experimento 1
 Experimento sem remoção de regras ruins (técnica coverage) e atualizando o modelo apenas com instâncias de teste classificadas como pertencente a uma nova classe.
-<!---
+-->
 #Experimento 2
 Experimento sem remoção de regras ruins (técnica coverage) e atualizando o modelo  com instâncias de teste classificadas como pertencente a uma nova classe e também com instâncias classificadas com 100% de confiança na primeira passagem.
 
+<!--
 #Experimento 3
 Experimento com remoção de regras ruins (técnica coverage) e atualizando o modelo  apenas com instâncias de teste classificadas como pertencente a uma nova classe.
+
 
 #Experimento 4
 Experimento com remoção de regras ruins (técnica coverage) e atualizando o modelo  com instâncias de teste classificadas como pertencente a uma nova classe e também com instâncias classificadas com 100% de confiança na primeira passagem.
@@ -36,7 +39,6 @@ Experimento com remoção de regras ruins (técnica coverage)  atualizando o mod
 ##Printers
 
 ```{r, echo=FALSE}
-
 dataFrame <- getDatFrame( gsub(" ", "", paste(experimento,"/","printers" )))
 #dataFrame
 ```
@@ -348,7 +350,7 @@ summary(subset$TrainTime)
 summary(subset$TestTime)
 ```
 
-##Cora
+##Cora (1)
 
 ```{r, echo=FALSE}
 dataFrame <- getDatFrame( gsub(" ", "", paste(experimento,"/","cora" )))
@@ -440,6 +442,111 @@ summary(subset$MicroF1)
 
 ```{r, echo=FALSE}
 plotTime(subset, "cora", 1)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+
+```
+
+##Cora (2)
+
+```{r, echo=FALSE}
+dataFrame <- getDatFrame( gsub(" ", "", paste(experimento,"/","cora2" )))
+#dataFrame
+```
+
+###90% treino
+
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 9),]
+plotMacMic(subset, "cora2", 9)
+
+``` 
+
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
+```
+
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
+```
+
+```{r, echo=FALSE}
+plotTime(subset, "cora2", 9)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+```
+
+
+###50% treino
+
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 5),]
+plotMacMic(subset, "cora2", 5)
+
+``` 
+
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
+```
+
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
+```
+
+```{r, echo=FALSE}
+plotTime(subset, "cora2", 5)
+```
+
+####Train
+```{r, echo=FALSE}
+summary(subset$TrainTime)
+```
+
+####Test
+```{r, echo=FALSE}
+summary(subset$TestTime)
+```
+
+### 10% treino
+
+```{r, echo=FALSE}
+subset <-dataFrame[which(dataFrame$Perc == 1),]
+plotMacMic(subset, "cora2", 1)
+
+``` 
+
+####Macro
+```{r, echo=FALSE}
+summary(subset$MacroF1)
+```
+
+####Micro
+```{r, echo=FALSE}
+summary(subset$MicroF1)
+```
+
+```{r, echo=FALSE}
+plotTime(subset, "cora2", 1)
 ```
 
 ####Train
